@@ -12,6 +12,7 @@ var hardBtn = document.querySelector("#hardBtn");
 var resetButton = document.querySelector("#reset");
 
 easyBtn.addEventListener("click", function(){
+	messageDisplay.textContent="";
 	easyBtn.classList.add("selected");
 	hardBtn.classList.remove("selected");
 	numSquares=3;
@@ -31,6 +32,7 @@ easyBtn.addEventListener("click", function(){
 });
 
 hardBtn.addEventListener("click", function(){
+	messageDisplay.textContent="";
 	easyBtn.classList.remove("selected");
 	hardBtn.classList.add("selected");
 	numSquares=6;
@@ -46,10 +48,11 @@ hardBtn.addEventListener("click", function(){
 });
 
 resetButton.addEventListener("click", function(){
+	messageDisplay.textContent="";
 	colors = generateRandomColors(numSquares);
 	pickedColor=pickColor();
 	colorDisplay.textContent = pickedColor;
-
+	this.textContent="New Colors";
 	for(var i = 0; i < squares.length; i++){
 	// add initial colors to squares
 	squares[i].style.backgroundColor = colors[i];
@@ -72,6 +75,7 @@ for(var i = 0; i < squares.length; i++){
 		//compare color to pickedColor
 		if(clickedColor === pickedColor) {
 			messageDisplay.textContent = "Correct!";
+			resetButton.textContent ="Play Again?";
 			changeColors(clickedColor);
 			h1.style.backgroundColor = clickedColor;
 		} else {
